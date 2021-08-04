@@ -1,0 +1,45 @@
+<html>
+  <table  style="height:100%; width:100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0;">
+  <tr>
+    <td  style="width: 80%;">
+    <div class="row" style="width: 100%; height: 100%;">
+ <!-- partial:index.partial.html -->
+  <img class='photo'  src="https://www.gospelherald.com/data/images/full/10552/the-legend-of-the-zelda-for-the-wii-u.png" alt="Image 1" />
+  <img class='photo'  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.lolwallpapers.net%2F2014%2F08%2Flol-champions-8.jpg&f=1&nofb=1" alt="Image 2" />
+  <img class='photo'  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7487062.jpg&f=1&nofb=1" alt="Image 3" />
+  <img class='photo'  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fres09.bignox.com%2Fappcenter%2Fen%2F2020%2F06%2Fcom.klab_.captain283.global.sc0_.2018-08-02-19-49-15.jpg&f=1&nofb=1" alt="Image 4" />
+</div>
+</td>
+  <td style="width: 20%;">
+    <div class="row" style="width: 100%; height: 100%;">
+        <form style="width: 100%;height: auto;" (ngSubmit)="login()">
+        <h5 style="padding: 8%;">YO! WELCOME TO</h5>
+        <h1 style="padding: 5%;">"FORLOGS"</h1><br><br><br><br><br>
+        <h2 style="color:rgb(0, 142, 236); background-color:rgb(0, 255, 0);padding: 3%;font-size: 20px;"><b>ACCOUNT LOGIN</b></h2>
+        <h3 style="color:rgb(0, 0, 0);font-size: 20px;">Enter Your Registered Credentials Here</h3>
+        <div class="form-group">
+        <input type="email" name="email" class="form-control" [(ngModel)]="email" placeholder="Enter email Id" required>
+        <a class="form-group" style="width: fit-content;">
+          <p *ngIf="errorMessage.length > 0" class="text-danger" >
+            <strong>{{errorMessage}}</strong></p></a>
+    </div>
+    <div class="form-group">
+        <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Enter Password" required>
+    </div>
+    <a class="form-group" style="width: fit-content;">
+      <p *ngIf="error.message.length > 0" class="text-danger" >
+        <strong>{{error.message}}</strong></p>
+      </a>
+    <div class="form-group row justify-content-center">
+        <button type="submit" class="btn btn-primary">Login</button><br>
+    </div>
+    <br>
+    <br>
+    <p class="register" ><a routerLink="/register" style="color:indianred;">New User Register</a></p>
+    <p class="register"><a routerLink="/about" style="color:green;">About Us</a></p>
+    </form>
+    </div>
+</td>
+</tr>
+</table>
+</html>
