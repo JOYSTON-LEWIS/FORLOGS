@@ -1,0 +1,88 @@
+<div class="header" *ngIf = "authservice.currentUser">
+  <h2 style="color:aqua;">WELCOME {{authservice.currentUserName}} TO YOUR DASHBOARD  <button style="height:1px; width:1px;" class="btn-danger" style="margin-left: 92%;" (click)="authservice.signout()">Logout</button></h2>
+  <p style="text-align:left; padding-left: 20%;color: white;">BLOGS.....................................................................................................................................................................................................................FORUMS</p>
+</div>
+<div class="row" *ngIf = "authservice.currentUser">
+  <div class="column">
+    <a href="http://localhost:7200/ctblog">
+      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmma.prnewswire.com%2Fmedia%2F1176149%2FKV20200603_en.jpg%3Fp%3Dpublish%26w%3D950&f=1&nofb=1" style="width:100%" >
+    </a>
+  </div>
+    <div class="column">
+      <a href="http://localhost:7200/ctforum">
+        <img src="https://e00-marca.uecdn.es/assets/multimedia/imagenes/2017/11/21/15112681375554.jpg" style="width:100%">
+      </a>
+    </div>
+<div class="row" *ngIf = "authservice.currentUser">
+  <div class="column">
+    <a href="http://localhost:7200/lolblog">
+      <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fblog.malwarebytes.org%2Fwp-content%2Fuploads%2F2013%2F08%2Fleague_of_legends.jpg&f=1&nofb=1" style="width:100%">
+    </a>
+  </div>
+  <div class="column">
+    <a href="http://localhost:7200/lolforum">
+      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcomparethemgames.files.wordpress.com%2F2013%2F11%2Fleague-of-legends-kyle-wide-free-677369.jpg&f=1&nofb=1" style="width:100%">
+    </a>
+  </div>
+</div>
+<div class="row" *ngIf = "authservice.currentUser">
+  <div class="column">
+    <a href="http://localhost:7200/giblog">
+      <img src="https://gamerbraves.sgp1.cdn.digitaloceanspaces.com/2019/06/Genshin-Impact-Preview.jpg" style="width:100%">
+    </a>
+  </div>
+  <div class="column">
+    <a href="http://localhost:7200/giforum">
+      <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdatacdn.btimesonline.com%2Fdata%2Fimages%2Ffull%2F115924%2Fgenshin-impact-trailer.jpg&f=1&nofb=1" style="width:100%">
+    </a>
+  </div>
+</div>
+
+<div *ngIf = "!authservice.currentUser">
+  <div class="alert alert-danger" style="background-color: rgb(255, 0, 0);color: rgb(0, 255, 255);">
+    <h1 style="margin-left: 33%;">ERROR 404! NOT FOUND</h1>
+  </div>
+  <div  class="alert alert-danger" style="background-color: rgb(255,165,0);"><h2 style="margin-left: 30%;">WE APOLOGISE For the Trouble BUT</h2></div>
+    <h3 class="text-info" style="background-color: rgb(	255,255,0);"><b class="text" style="margin-left: 30%;">YOU MUST</b><button type="submit" class="btn btn-primary" style="margin-left:auto;margin-right:auto;display:block; width: 12%;" routerLink="/login" ><b>LOGIN</b></button><b class="text" style="margin-left: 60%;"> TO CONTINUE</b></h3>.
+    <h1 style="background-color: rgb(0,255,0);"><h1 style="margin-left: 47.5%;">OR</h1></h1><br>
+    <h1 class="text-info" style="background-color: rgb(0,0,255);"><h1 class="text" style="margin-left: 27.5%;color: lawngreen;">Click on one of the Links below for more</h1></h1><br>
+    <h1 style="background-color: rgb(75, 0, 130);"><div class="register p-2" style="margin-left: auto;margin-right: auto;background-color: rgb(0,0,255);"><a href="#" routerLink="/register"><h4 style="color: lawngreen;"><li>Register</li></h4></a></div></h1><br>
+    <h1 style="background-color: rgb(148,0,211);"><div class="about p-2" style="margin-left: auto;margin-right: auto;background-color: rgb(0,0,255);"><a href="#" routerLink="/about"><h4 style="color: lawngreen;"><li>About Us</li></h4></a></div></h1><br>
+  </div>
+
+
+
+
+  <div *ngIf = "authservice.currentUser" class="footer">
+    <h2 style="color: black;">.</h2>
+  </div>
+
+
+<!--
+<div class="container" *ngIf = "authservice.currentUser">
+<a href="http://localhost:7200/ctblog">
+  <img src="https://www.gospelherald.com/data/images/full/10552/the-legend-of-the-zelda-for-the-wii-u.png"></a>
+</div>
+<div class="container" *ngIf = "authservice.currentUser">
+  <a href="http://localhost:7200/ctforum">
+  <img src="https://www.gospelherald.com/data/images/full/10552/the-legend-of-the-zelda-for-the-wii-u.png"></a>
+</div>
+<div class="container" *ngIf = "authservice.currentUser">
+  <a href="http://localhost:7200/lolblog">
+  <img src="https://www.gospelherald.com/data/images/full/10552/the-legend-of-the-zelda-for-the-wii-u.png"></a>
+</div>
+<div class="container" *ngIf = "authservice.currentUser">
+  <a href="http://localhost:7200/lolforum">
+  <img src="https://www.gospelherald.com/data/images/full/10552/the-legend-of-the-zelda-for-the-wii-u.png"></a>
+</div>
+<div class="container" *ngIf = "authservice.currentUser">
+  <a href="http://localhost:7200/pubgblog">
+  <img src="https://www.gospelherald.com/data/images/full/10552/the-legend-of-the-zelda-for-the-wii-u.png"></a>
+</div>
+<div class="container" *ngIf = "authservice.currentUser">
+  <a href="http://localhost:7200/pubgforum">
+  <img src="https://www.gospelherald.com/data/images/full/10552/the-legend-of-the-zelda-for-the-wii-u.png"></a>
+</div>
+-->
+
+

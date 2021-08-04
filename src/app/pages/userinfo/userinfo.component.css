@@ -1,0 +1,40 @@
+/* Header */
+.header {
+  text-align: center;
+  background: rgb(0, 102, 255);
+  margin-top: 0px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+
+/* Footer */
+.footer {
+  text-align: center;
+  background: black;
+  margin-top: 0%;
+  width:100%
+
+}
+
+/*images css*/
+.row {
+  display: flex;
+  height:20%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.column {
+  flex: 50%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+/* The overlay effect - lays on top of the container and over the image */
+
+
+/*Redirecting Section Background Code*/
+.register{max-width: 200px; border:solid 2px rgb(82, 82, 82); margin: 3px;  background-color: rgb(0, 255, 0);}
+.login{max-width: 200px; border:solid 2px rgb(82, 82, 82); margin: 3px;  background-color: rgb(255, 0, 0);}
+.about{max-width: 200px; border:solid 2px rgb(82, 82, 82); margin: 3px;  background-color: rgb(0, 4, 255);}
