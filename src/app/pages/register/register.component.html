@@ -1,0 +1,100 @@
+
+<div class="grid-container">
+  <div class="item1" >
+    <div class="flip-card"style="height: 365px;width: 400px;">
+      <div class="flip-card-inner" style="background-color: rgb(245, 0, 253);color:white;">
+        <div class="flip-card-back">
+          <div style="margin-top: 50px;">
+          <p style="background-color:rgb(0, 255, 242);color:black">Forlogs is combination of forums and weblogs</p>
+          <p>Latest popular video games,multiplayer,single player games are considered</p>
+        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <p>WHAT IS FORLOGS?</p>
+      </div>
+    </div>
+  </div>
+  <div class="item2">
+    <div class="container" style="padding: 75px;margin-top: 75px;">
+      <div class="row justify-content-center">
+          <div class="col-md-16">
+              <form (ngSubmit)="register()">
+              <h2 class="row justify-content-center" style="color:rgb(34, 30, 255);"><b>REGISTER PAGE</b></h2>
+              <h3 style="color:rgb(0, 0, 0);">Didn't Register YET? Well Lets Get You Started :D</h3>
+              <div class="form-group p-2">
+                  <input type="email" name="email" class="form-control" [(ngModel)]="email" placeholder="Enter email Id" required>
+              </div>
+              <div class="form-group p-2">
+                  <input type="password" name="password" class="form-control" [(ngModel)]="password" placeholder="Enter Password"
+                      required>
+                      <a class="form-group" style="font-size: 20px;">
+                        <p *ngIf="errorMessage.length > 0" class="text-danger">
+                          <strong>{{errorMessage}}</strong></p>
+
+                        <p *ngIf="error.message.length > 0" class="text-danger">
+                          <strong>{{error.message}}</strong></p>
+
+                            <p *ngIf="message.length > 0" class="text-info">
+                              <strong>{{message}} </strong></p>
+                      </a>
+              </div>
+              <div class="form-group row justify-content-center p-2">
+                  <button type="submit" class="btn btn-primary">Register</button>
+
+                  <div class="register p-2"><a routerLink="/login">Back To Login -></a></div>
+              </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="item3">
+    <div class="flip-card" style="height: 365px;width: 400px;">
+      <div class="flip-card-inner"  style="background-color: rgb(255, 251, 0);">
+        <div class="flip-card-back">
+          <div style="margin-top: 75px;">
+          <p style="background-color:rgb(0, 255, 242);color:black">We allow anonymous creation and commenting</p>
+          <p>We keep updating as soon as popular games change in market</p>
+        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <p>HOW ARE WE DIFFERENT YOU ASK?</p>
+      </div>
+  </div>
+  </div>
+  <div class="item4" >
+    <div class="flip-card"style="height: 365px;width: 400px;">
+      <div class="flip-card-inner"  style="background-color: rgb(0, 255, 0);">
+        <div class="flip-card-back">
+          <div style="margin-top: 50px;">
+          <p>We dont care how many accounts u make,share content for the community</p>
+          <p style="background-color:rgb(0, 255, 242);color:black">Complete freedom to post anything except antisocial and off topic</p>
+        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <p>WHAT'S IN IT FOR YOU?</p>
+      </div>
+    </div>
+  </div>
+  <div class="item5">
+    <div class="flip-card" style="height: 365px;width: 400px;">
+      <div class="flip-card-inner" style="background-color: rgb(255, 0, 0);color:white;">
+        <div class="flip-card-back">
+          <div style="margin-top: 75px;">
+          <p>All are welcome built primarily for gamers</p>
+          <p style="background-color:rgb(0, 255, 242);color:black">Connect with the gaming community all in one spot</p>
+        </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <p>WHY JOIN FORLOGS?</p>
+      </div>
+  </div>
+  </div>
