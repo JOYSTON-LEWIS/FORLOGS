@@ -1,0 +1,130 @@
+<div class="header" *ngIf = "authservice.currentUser">
+  <h2 style="color: white;">WELCOME TO THE LEAGUE OF LEGENDS FORUM</h2>
+
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/userinfo">Home</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/ctblog">CTBlog</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/ctforum">CTForum</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/lolblog">LOLBlog</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/giblog">GIBlog</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/giforum">GIForum</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/about">About Us</button>
+<button *ngIf = "authservice.currentUser" class="btn-danger" style="width : 12.5%;" (click)="authservice.signout()">Logout</button>
+</div>
+
+<div>
+<body *ngIf = "authservice.currentUser">
+  <table style="width:100%;height:100%;border:chartreuse solid 1px">
+    <td style="width:20%;border:chartreuse solid 3px;background-color: black;">
+      <a style='color: darkseagreen;padding-bottom: 10%;' href="https://euw.leagueoflegends.com/en-us/">DISCLAIMER:Copyrighted Content-Videos,Name Tags CREDIT Goes to Developer:RIOT GAMES #LEAGUEOFLEGENDS</a>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/vzHrjOMfHPY?autoplay=1&mute=1&loop=1&playlist=vzHrjOMfHPY" allowfullscreen>
+    </iframe>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/asSXPH3IQEQ?autoplay=1&mute=1&loop=1&playlist=asSXPH3IQEQ" allowfullscreen>
+      </iframe>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/ur9iY6gSJM?autoplay=1&mute=1&loop=1&playlist=ur9iY6gSJM" allowfullscreen>
+      </iframe>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/BYZ3M_lGCJc?autoplay=1&mute=1&loop=1&playlist=BYZ3M_lGCJc" allowfullscreen>
+      </iframe>
+      <a style='padding-bottom: 10%;'>Videos Will Change Every Day<br>Newer Videos will be updated every week :D</a>
+    </td>
+
+
+    <td style="width:60%;height:100%;border:chartreuse solid 3px;background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fesports-assets.s3.amazonaws.com%2Fproduction%2Ffiles%2FWorlds2017%2FWallpapers%2FMobile%2FChase%2520Your%2520Legend%25202.jpg&f=1&nofb=1)">
+      <h3 class="card" style="padding-left: 40%;;background-color: white;">FORUM-CONTENT</h3>
+      <div class="container" width='auto'>
+        <div class='row-md-3'>
+          <div class="card" *ngFor="let item of lolforum">
+            <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+              <h2 class="card-title" style="color:aqua;font-size: 10px;">{{item.Uid}} started a new thread titled:<br></h2>
+              <h6 class="card-subtitle"  style= "color: red;font-size:30px;">{{item.Title}}</h6>
+              <h6 class="card-subtitle"  style= "color: greenyellow;font-size: 30px;">{{item.Content}}</h6>
+              <!--
+              <a routerLink='/lolforum' class="card-link" (click)="EditRecord(item)">Edit</a>
+              <a routerLink='/lolforum' class="card-link" (click)="RemoveRecord(item.id)">Delete</a>
+              -->
+            </div>
+
+            <ng-template #elseBlock>
+              <div class="card-body">
+                <h5 class="card-title">Edit</h5>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <input type="text" class="form-control" [(ngModel)]="item.Editblogtitle" placeholder="Edit Title">
+                    </div>
+                    <div class="col-md-12">
+                      <input type="text" class="form-control" [(ngModel)]="item.Editblogcontent" placeholder="Edit Content">
+                    </div>
+                  </div>
+                </div>
+
+                <a routerLink='/lolforum' class="card-link" (click)="item.isEdit = false">Cancel</a>
+                <a routerLink='/lolforum' class="card-link" (click)="UpdateRecord(item)">Update</a>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+
+    </td>
+
+
+
+    <td style="width:20%;height:100%;background-color: black;border:chartreuse solid 3px">
+      <button style="background-color: darkorange;" (click)="toggle()" id="bt">
+        {{buttonName}}
+    </button><br>
+
+    <ng-container *ngIf="show">
+      <div class="container" width='auto'>
+        <div class="row">
+          <div class="input">
+            <input type="text" class="form-control" [(ngModel)]="forumtitle" placeholder="Enter Thread Title">
+          </div>
+          <div class="input">
+            <textarea type="text" class="form-control" style="word-wrap: break-word;word-break: break-all;height: 75px; width: max-content;"
+            [(ngModel)]="forumcontent" placeholder="Enter Post"></textarea>
+          </div>
+          <div class="input">
+            <button type="button" (click)="CreateRecord()" [disabled]="!forumtitle || !forumcontent" class="btn btn-primary">+
+              Create New Thread</button>
+          </div>
+        </div>
+      </div>
+    </ng-container><br>
+    <p type="text" class="form-control" style="word-wrap: break-word;word-break: break-all;height: fit-content; width: 360px"
+    >ABOUT RIOT GAMES INC<br>
+    Riot Games, Inc. is an American video game developer, publisher, and esports tournament organizer based in West Los Angeles, California. The company was founded in September 2006 by University of Southern California roommates Brandon Beck and Marc Merrill, as they sought to create a company that continuously improves on an already released game, instead of commencing development on a new one. Riot Games was majority-acquired by Chinese corporation Tencent in February 2011 and fully acquired in December 2015. As of May 2018, Riot Games operates 24 offices around the world, in which it employs 2,500 staff members.
+    Riot Games is best known for League of Legends, a multiplayer online battle arena game and the company's flagship product. The game was first released in October 2009 and subsequently became the game with the highest active player count by 2013. Since 2011, Riot Games also operates various esports tournaments for the game, including the League of Legends World Championship, the Championship Series, the European Championship, and the Mid-Season Invitational.<br><br>
+    ABOUT LEAGUE OF LEGENDS<br>
+    League of Legends (abbreviated LoL or League) is a 2009 multiplayer online battle arena video game developed and published by Riot Games for Microsoft Windows and macOS. Originally inspired by Defense of the Ancients, the game has followed a freemium model since its release on October 27, 2009. League of Legends is often cited as the world's largest esport, with an international competitive scene. The 2019 League of Legends World Championship had over 100 million unique viewers, peaking at a concurrent viewership of 44 million, with a minimum prize pool of US$2.5 million.
+    In League of Legends, players form a team of five and assume the role of a champion, characters with unique abilities, generally varying around a type of class, and battle against a team of player- or computer-controlled champions. In the main game mode, Summoner's Rift, the goal is to destroy the opposing team's Nexus, a structure that lies at the heart of their base and is protected by defensive structures.
+    A mobile version, League of Legends: Wild Rift, entered an open beta for the Southeast Asia region on October 27, 2020.
+  </p>
+    </td>
+  </table>
+  </body>
+
+</div>
+
+
+<div *ngIf = "!authservice.currentUser">
+    <div class="alert alert-danger" style="background-color: rgb(255, 0, 0);color: rgb(0, 255, 255);">
+      <h1 style="margin-left: 33%;">ERROR 404! NOT FOUND</h1>
+    </div>
+    <div  class="alert alert-danger" style="background-color: rgb(255,165,0);"><h2 style="margin-left: 30%;">WE APOLOGISE For the Trouble BUT</h2></div>
+      <h3 class="text-info" style="background-color: rgb(	255,255,0);"><b class="text" style="margin-left: 30%;">YOU MUST</b><button type="submit" class="btn btn-primary" style="margin-left:auto;margin-right:auto;display:block; width: 12%;" routerLink="/login" ><b>LOGIN</b></button><b class="text" style="margin-left: 60%;"> TO CONTINUE</b></h3>.
+      <h1 style="background-color: rgb(0,255,0);"><h1 style="margin-left: 47.5%;">OR</h1></h1><br>
+      <h1 class="text-info" style="background-color: rgb(0,0,255);"><h1 class="text" style="margin-left: 27.5%;color: lawngreen;">Click on one of the Links below for more</h1></h1><br>
+      <h1 style="background-color: rgb(75, 0, 130);"><div class="register p-2" style="margin-left: auto;margin-right: auto;background-color: rgb(0,0,255);"><a href="#" routerLink="/register"><h4 style="color: lawngreen;"><li>Register</li></h4></a></div></h1><br>
+      <h1 style="background-color: rgb(148,0,211);"><div class="about p-2" style="margin-left: auto;margin-right: auto;background-color: rgb(0,0,255);"><a href="#" routerLink="/about"><h4 style="color: lawngreen;"><li>About Us</li></h4></a></div></h1><br>
+    </div>
+
+
+<div *ngIf = "authservice.currentUser" class="footer">
+  <h2>.</h2>
+</div>
