@@ -1,0 +1,64 @@
+body {
+  font-family: Arial;
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  text-align: center;
+  background: blue;
+  margin-top: 0px;
+}
+
+/*card color*/
+.card {
+  background-color: black;
+}
+
+
+/* Style the tab content (and add height:100% for full page content) */
+.tablink {
+  background-color: rgb(242, 245, 106);
+  width : 12.5%;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #aaa;
+  width: 100%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  background: black;
+  margin-bottom: 0%;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {
+    width: 100%;
+    padding: 0;
+  }
+}
