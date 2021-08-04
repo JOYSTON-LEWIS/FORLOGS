@@ -1,0 +1,166 @@
+<div class="header" *ngIf = "authservice.currentUser">
+  <h2 style="color: white;">WELCOME TO CAPTAIN TSUBASA : DREAM TEAM BLOG</h2>
+
+
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/userinfo">Home</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/ctforum">CTForum</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/lolblog">LOLBlog</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/lolforum">LOLForum</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/giblog">GIBlog</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/giforum">GIForum</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/about">About Us</button>
+<button *ngIf = "authservice.currentUser" class="btn-danger" style="width : 12.5%;" (click)="authservice.signout()">Logout</button>
+</div>
+
+<div>
+<body *ngIf = "authservice.currentUser">
+  <table style="width:100%;height:100%;border:chartreuse solid 1px">
+    <td style="width:20%;border:chartreuse solid 3px">
+      <a style='padding-bottom: 10%;' href="https://www.tsubasa-dreamteam.com/en/">DISCLAIMER:Copyrighted Content-Videos,Name Tags CREDIT Goes to Developer:KLAB #CAPTAINTSUBASADT</a>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/7ka2T9juKOI?autoplay=1&mute=1&loop=1&playlist=7ka2T9juKOI" allowfullscreen>
+    </iframe>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/sW6W1gOw3fg?autoplay=1&mute=1&loop=1&playlist=sW6W1gOw3fg" allowfullscreen>
+      </iframe>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/cZccb_oG0P0?autoplay=1&mute=1&loop=1&playlist=cZccb_oG0P0" allowfullscreen>
+      </iframe>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/Ly0XRbhKSpE?autoplay=1&mute=1&loop=1&playlist=Ly0XRbhKSpE" allowfullscreen>
+      </iframe>
+      <a style='padding-bottom: 10%;'>Videos Will Change Every Day<br>Newer Videos will be updated every week :D</a>
+    </td>
+
+    <td style="width:60%;height:100%;border:chartreuse solid 3px;background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fapkinstallerr.com%2Fphotos%2F1003-captain-tsubasa-dream-team-1.png&f=1&nofb=1)">
+      <h3 class="card" style="padding-left: 40%;">BLOG-CONTENT</h3>
+      <div class="container" width='auto'>
+        <div class='row-md-3'>
+          <div class="card" style="background:violet;" *ngFor="let item of ctblog">
+            <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+              <h2 class="card-title" style="padding-left: 30%;color:blue;font-size: 30px;">{{item.Title}}</h2>
+              <h6 class="card-subtitle mb-2" style="color:yellow;font-size: 20px;">{{item.Content}}</h6>
+              <p class="card-text">{{item.Comment}}</p>
+              <p class="card-text" style="font-size: 8px;">Posted By Uid: {{item.Uid}} on {{item.Time}}</p>
+              <!--
+              <a routerLink='/ctblog' class="card-link" (click)="EditRecord(item)">Edit</a>
+              <a routerLink='/ctblog' class="card-link" (click)="RemoveRecord(item.id)">Delete</a>
+                -->
+            </div>
+
+            <ng-template #elseBlock>
+              <div class="card-body">
+                <h5 class="card-title">Edit</h5>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <input type="text" class="form-control" [(ngModel)]="item.Editblogtitle" placeholder="Edit Title">
+                    </div>
+                    <div class="col-md-12">
+                      <input type="text" class="form-control" [(ngModel)]="item.Editblogcontent" placeholder="Edit Content">
+                    </div>
+                  </div>
+                </div>
+
+                <a routerLink='/ctblog' class="card-link" (click)="item.isEdit = false">Cancel</a>
+                <a routerLink='/ctblog' class="card-link" (click)="UpdateRecord(item)">Update</a>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </td>
+
+
+
+    <td style="width:20%;height:100%;border:chartreuse solid 3px">
+      <button style="background-color: teal;" (click)="toggle()" id="bt">
+        {{buttonName}}
+    </button><br>
+
+    <ng-container *ngIf="show">
+      <div class="container" width='auto'>
+        <div class="row">
+          <div class="input">
+            <input type="text" class="form-control" [(ngModel)]="blogtitle" placeholder="Enter Blog Title">
+          </div>
+          <div class="input">
+            <textarea type="text" class="form-control" style="word-wrap: break-word;word-break: break-all;height: 100px; width: max-content;"
+            [(ngModel)]="blogcontent" placeholder="Enter Blog Content"></textarea>
+          </div>
+          <div class="input">
+            <button type="button" (click)="CreateRecord()" [disabled]="!blogtitle || !blogcontent" class="btn btn-primary">+
+              Create New Post</button>
+          </div>
+        </div>
+      </div>
+    </ng-container><br>
+      <p type="text" class="form-control" style="word-wrap: break-word;word-break: break-all;height: fit-content; width: 360px"
+      >ABOUT TSUBASA<br>
+      Captain Tsubasa is a Japanese manga series,originally created by Yōichi Takahashi in 1981.The series mainly revolves around the sport of association football focusing on Tsubasa Oozora.The series is characterized by dynamic and exciting football moves, often stylish and implausible.The plot focuses on Tsubasa's relationship with his friends,rivalry with his opponents, training, competition and the action and outcome of each football match.Across the multiple Captain Tsubasa mangas, the plot shows Tsubasa's and his friends' growth as they face new rivals.Takahashi decided to create Captain Tsubasa inspired by 1978 FIFA World Cup in Argentina.
+      The Captain Tsubasa manga series was originally serialized in Shueisha's Weekly Shōnen Jump comic book magazine between 1981 and 1988, spanning a total of 37 tankōbon volumes. This was followed by numerous sequels. Captain Tsubasa and its sequels have sold over 80 million copies worldwide,making it one of the best-selling manga series.The original Captain Tsubasa manga series was adapted into a TV animation series, produced by Tsuchida Production, whose first season premiered in Japan on the TV Tokyo network between October 1983 and March 1986. Numerous movies and television series have followed with the latest one airing between April 2018 and April 2019.<br><br>
+      ABOUT TSUBASA DREAM TEAM<br>
+      On 5 December 2017, a global version for the game was released by the name of: Captain Tsubasa: Dream Team. This version offers multilingual support, giving players the option to play in many languages — English, French, German, Italian, Spanish, and Traditional Chinese.
+      Captain Tsubasa: Tatakae Dream Team (キャプテン翼～たたかえドリームチーム～), also known as Captain Tsubasa: Dream Team, is a sports game developed by KLabGames for iOS and Android devices. The game was released on 13 June 2017 in Japan and on 5 December 2017 elsewhere. In the game, the player can join Tsubasa, Misaki, Hyuga and all-time favorites while building the greatest "Dream team" and hit the pitch.
+    </p>
+    </td>
+  </table>
+  </body>
+
+</div>
+
+
+<div *ngIf = "!authservice.currentUser">
+    <div class="alert alert-danger" style="background-color: rgb(255, 0, 0);color: rgb(0, 255, 255);">
+      <h1 style="margin-left: 33%;">ERROR 404! NOT FOUND</h1>
+    </div>
+    <div  class="alert alert-danger" style="background-color: rgb(255,165,0);"><h2 style="margin-left: 30%;">WE APOLOGISE For the Trouble BUT</h2></div>
+      <h3 class="text-info" style="background-color: rgb(	255,255,0);"><b class="text" style="margin-left: 30%;">YOU MUST</b><button type="submit" class="btn btn-primary" style="margin-left:auto;margin-right:auto;display:block; width: 12%;" routerLink="/login" ><b>LOGIN</b></button><b class="text" style="margin-left: 60%;"> TO CONTINUE</b></h3>.
+      <h1 style="background-color: rgb(0,255,0);"><h1 style="margin-left: 47.5%;">OR</h1></h1><br>
+      <h1 class="text-info" style="background-color: rgb(0,0,255);"><h1 class="text" style="margin-left: 27.5%;color: lawngreen;">Click on one of the Links below for more</h1></h1><br>
+      <h1 style="background-color: rgb(75, 0, 130);"><div class="register p-2" style="margin-left: auto;margin-right: auto;background-color: rgb(0,0,255);"><a href="#" routerLink="/register"><h4 style="color: lawngreen;"><li>Register</li></h4></a></div></h1><br>
+      <h1 style="background-color: rgb(148,0,211);"><div class="about p-2" style="margin-left: auto;margin-right: auto;background-color: rgb(0,0,255);"><a href="#" routerLink="/about"><h4 style="color: lawngreen;"><li>About Us</li></h4></a></div></h1><br>
+    </div>
+
+
+
+<div *ngIf = "authservice.currentUser" class="footer">
+  <h2>.</h2>
+</div>
+
+<!---  <p class="card-text">Comment Set: {{item.commentset}}</p>
+<input type="text" class="form-control" [(ngModel)]="commentset"  placeholder="Enter Blog Comment">
+<button type="button" (click)="addToCommList(ctblog)" class="btn btn-primary">+
+Post Comment</button> --->
+
+
+<!--
+    <div style="width: 300px;">
+      <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="item">Description</label>
+          <input type="hidden" class="form-control"
+            id="item"
+            required [(ngModel)]="useridValue" name="item">
+          <input type="text" class="form-control"
+            placeholder="Enter Blog Title" id="item"
+            required [(ngModel)]="titleValue" name="item">
+            <input type="text" class="form-control"
+            placeholder="Enter Description" id="item"
+            required [(ngModel)]="descriptionValue" name="item">
+        </div>
+
+        <div class="btn-group">
+          <button type="submit" class="btn btn-success">Publish Post</button>
+        </div>
+      </form>
+    </div>
+
+    <h2>Content from Firebase</h2>
+    <div class="col-md-3">
+      <pre *ngFor="let userid of userid | async"><li>{{userid.content}} </li></pre>
+      <pre *ngFor="let title of title | async"><li>{{title.content}}</li></pre>
+      <pre *ngFor="let description of description | async"><li>{{description.content}}</li></pre>
+      <pre *ngFor="let post of post | async"><li>{{post.content}}</li></pre>
+    </div>
+--->
