@@ -1,0 +1,129 @@
+<div class="header" *ngIf = "authservice.currentUser">
+  <h2 style="color: black;">WELCOME TO GENSHIN IMPACT FORUM</h2>
+
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/userinfo">Home</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/ctblog">CTBlog</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/ctforum">CTForum</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/lolblog">LOLBlog</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/lolforum">LOLForum</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/giblog">GIBlog</button>
+<button *ngIf = "authservice.currentUser" class="tablink" routerLink="/about">About Us</button>
+<button *ngIf = "authservice.currentUser" class="btn-danger" style="width : 12.5%;" (click)="authservice.signout()">Logout</button>
+</div>
+
+<div>
+<body *ngIf = "authservice.currentUser">
+  <table style="width:100%;height:100%;border:chartreuse solid 1px">
+    <td style="width:20%;border:chartreuse solid 3px;background-color: yellow;">
+      <a style='padding-bottom: 10%;color:darkred' href="https://genshin.mihoyo.com/en/home">DISCLAIMER:Copyrighted Content-Videos,Name Tags CREDIT Goes to Developer:MIHOYO #GENSHINIMPACT</a>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/SO__VQZirJ4?autoplay=1&mute=1&loop=1&playlist=SO__VQZirJ4" allowfullscreen>
+    </iframe>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/t7xFSSu0-V8?autoplay=1&mute=1&loop=1&playlist=t7xFSSu0-V8" allowfullscreen>
+      </iframe>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/3f2-EANyrNM?autoplay=1&mute=1&loop=1&playlist=3f2-EANyrNM" allowfullscreen>
+      </iframe>
+      <iframe id="ytplayer" type="text/html" width='auto' height="240"
+      src="https://www.youtube.com/embed/t6BZjmGpq40?autoplay=1&mute=1&loop=1&playlist=t6BZjmGpq40" allowfullscreen>
+      </iframe>
+      <a style='padding-bottom: 10%;color:darkred'>Videos Will Change Every Day<br>Newer Videos will be updated every week :D</a>
+    </td>
+
+
+    <td style="width:60%;height:100%;border:chartreuse solid 3px;background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fe-shuushuu.net%2Fimages%2F2020-10-14-1040721.png&f=1&nofb=1)">
+      <h3 class="card" style="padding-left: 40%;;background-color: white;">FORUM-CONTENT</h3>
+      <div class="container" width='auto'>
+        <div class='row-md-3'>
+          <div class="card" *ngFor="let item of giforum">
+            <div class="card-body" *ngIf="!item.isEdit; else elseBlock">
+              <h2 class="card-title" style="color:aqua;font-size: 10px;">{{item.Uid}} started a new thread titled:<br></h2>
+              <h6 class="card-subtitle"  style= "color: red;font-size:30px;">{{item.Title}}</h6>
+              <h6 class="card-subtitle"  style= "color: greenyellow;font-size: 30px;">{{item.Content}}</h6>
+              <!--
+              <a routerLink='/giforum' class="card-link" (click)="EditRecord(item)">Edit</a>
+              <a routerLink='/giforum' class="card-link" (click)="RemoveRecord(item.id)">Delete</a>
+              -->
+            </div>
+
+            <ng-template #elseBlock>
+              <div class="card-body">
+                <h5 class="card-title">Edit</h5>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <input type="text" class="form-control" [(ngModel)]="item.Editblogtitle" placeholder="Edit Title">
+                    </div>
+                    <div class="col-md-12">
+                      <input type="text" class="form-control" [(ngModel)]="item.Editblogcontent" placeholder="Edit Content">
+                    </div>
+                  </div>
+                </div>
+
+                <a routerLink='/giforum' class="card-link" (click)="item.isEdit = false">Cancel</a>
+                <a routerLink='/giforum' class="card-link" (click)="UpdateRecord(item)">Update</a>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+
+
+    </td>
+
+
+
+    <td style="width:20%;height:100%;border:chartreuse solid 3px;background-color: yellow;">
+      <button style="background-color: purple;color:white" (click)="toggle()" id="bt">
+        {{buttonName}}
+    </button><br>
+
+    <ng-container *ngIf="show">
+      <div class="container" width='auto'>
+        <div class="row">
+          <div class="input">
+            <input type="text" class="form-control" [(ngModel)]="forumtitle" placeholder="Enter Thread Title">
+          </div>
+          <div class="input">
+            <textarea type="text" class="form-control" style="word-wrap: break-word;word-break: break-all;height: 75px; width: max-content;"
+            [(ngModel)]="forumcontent" placeholder="Enter Post"></textarea>
+          </div>
+          <div class="input">
+            <button type="button" (click)="CreateRecord()" [disabled]="!forumtitle || !forumcontent" class="btn btn-primary">+
+              Create New Thread</button>
+          </div>
+        </div>
+      </div>
+    </ng-container><br>
+      <p type="text" class="form-control" style="word-wrap: break-word;word-break: break-all;height: fit-content; width: 360px"
+      >ABOUT MIHOYO<br>
+      miHoYo is a Chinese video game development and publishing studio based in Shanghai, China, and are the creators of Genshin Impact, as well as Honkai Impact 3rd.
+      miHoYo was founded in 2012 by three Shanghai Jiaotong University graduate students who shared a passion for technology and ACG (anime, comics, and games) culture. These otakus formed what has become not just a game company, but an original IP creator with its own anime, manga, light novels, music, and more that expand upon the engaging worlds and stories of games.<br><br>
+      ABOUT GENSHIN IMPACT<br>
+      Genshin Impact is a free-to-play action role-playing game developed and published by miHoYo.The game features a fantasy open world environment and action based battle system using elemental magic, character switching and uses gacha game monetization for players to obtain new characters, weapons, and other resources.The game is online-only and features a limited multiplayer mode allowing up to four players to play together.It was released for Microsoft Windows, PlayStation 4, Android and iOS on September 28, 2020.Genshin Impact has also planned to release on Nintendo Switch and PlayStation 5.
+      Genshin Impact takes place in the fantasy world of Teyvat, which is home to seven distinct nations, each of which is tied to an element and ruled by a god associated with it. The story follows a twin, referred to as the Traveler, who travelled across many worlds but becomes separated from their other twin by an unknown god in Teyvat. They travel across Teyvat with their newfound companion, Paimon, in search of their lost sibling and become involved in the affairs of the world and its nations. The game received a generally positive reception, with critics praising the combat and open-world freedom, while some criticism was raised at its endgame. The game grossed over $250 million within a month from transactions on mobile devices, making it one of the largest mobile game launches in history.
+    </p>
+    </td>
+  </table>
+  </body>
+
+</div>
+
+
+<div *ngIf = "!authservice.currentUser">
+    <div class="alert alert-danger" style="background-color: rgb(255, 0, 0);color: rgb(0, 255, 255);">
+      <h1 style="margin-left: 33%;">ERROR 404! NOT FOUND</h1>
+    </div>
+    <div  class="alert alert-danger" style="background-color: rgb(255,165,0);"><h2 style="margin-left: 30%;">WE APOLOGISE For the Trouble BUT</h2></div>
+      <h3 class="text-info" style="background-color: rgb(	255,255,0);"><b class="text" style="margin-left: 30%;">YOU MUST</b><button type="submit" class="btn btn-primary" style="margin-left:auto;margin-right:auto;display:block; width: 12%;" routerLink="/login" ><b>LOGIN</b></button><b class="text" style="margin-left: 60%;"> TO CONTINUE</b></h3>.
+      <h1 style="background-color: rgb(0,255,0);"><h1 style="margin-left: 47.5%;">OR</h1></h1><br>
+      <h1 class="text-info" style="background-color: rgb(0,0,255);"><h1 class="text" style="margin-left: 27.5%;color: lawngreen;">Click on one of the Links below for more</h1></h1><br>
+      <h1 style="background-color: rgb(75, 0, 130);"><div class="register p-2" style="margin-left: auto;margin-right: auto;background-color: rgb(0,0,255);"><a href="#" routerLink="/register"><h4 style="color: lawngreen;"><li>Register</li></h4></a></div></h1><br>
+      <h1 style="background-color: rgb(148,0,211);"><div class="about p-2" style="margin-left: auto;margin-right: auto;background-color: rgb(0,0,255);"><a href="#" routerLink="/about"><h4 style="color: lawngreen;"><li>About Us</li></h4></a></div></h1><br>
+    </div>
+
+
+<div *ngIf = "authservice.currentUser" class="footer">
+  <h2>.</h2>
+</div>
